@@ -1,3 +1,5 @@
+// Had problems with the below, didn't have time to figure out
+
 const http = require("http");
 var StringDecoder = require("string_decoder").StringDecoder;
 
@@ -22,6 +24,7 @@ const getBody = (req, callback) => {
 
 // here, you could declare one or more variables to store what comes back from the form.
 let item = "Enter something below.";
+// let name = name.target.value;
 
 // here, you can change the form below to modify the input fields and what is displayed.
 // This is just ordinary html with string interpolation.
@@ -31,6 +34,10 @@ const form = () => {
   <p>${item}</p>
   <form method="POST">
   <input name="item"></input>
+  </br>
+  </br>
+  <label>Your Name</label>
+  <input name="name"></input>
   <button type="submit">Submit</button>
   </form>
   </body>
