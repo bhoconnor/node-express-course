@@ -1,7 +1,10 @@
+// This module demos callback hell
+
 const { writeFile } = require("fs");
 
 // writeFile syntax includes ([path], (error, result), then enter what to do if there's an error & what the result will be
 console.log("at start");
+
 writeFile("./temporary/output.txt", "This is line 1\n", (err, result) => {
   console.log("at point 1");
   if (err) {
