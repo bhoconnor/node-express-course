@@ -1,5 +1,9 @@
+// Code below will create responses from server for certain pages (home, about, & anything else is an error)
+
 const http = require("http");
 
+// req & res are common, could be different if wanted; req is like if client was requesting something from webpage; res is what we're sending back
+// Use `createServer` method on http
 const server = http.createServer((req, res) => {
   //   if (req.url === "/") {
   //     res.end("RightO cap'n, welcome to the Ship's Home Page!");
