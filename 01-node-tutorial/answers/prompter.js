@@ -1,3 +1,5 @@
+// Had problems with the below, didn't have time to figure out
+
 const http = require("http");
 var StringDecoder = require("string_decoder").StringDecoder;
 
@@ -21,16 +23,35 @@ const getBody = (req, callback) => {
 };
 
 // here, you could declare one or more variables to store what comes back from the form.
-let item = "Enter something below.";
+let item = "(hint: fill in both boxes, then hit submit...)";
+let name = null;
 
 // here, you can change the form below to modify the input fields and what is displayed.
 // This is just ordinary html with string interpolation.
 const form = () => {
   return `
   <body>
-  <p>${item}</p>
+  <p><strong>Your magic response</strong>:  ${
+    name ? `<p>${name} really loves...</p>` : ""
+  } <em>${item}!</em></p>
   <form method="POST">
+  <hr>
+  <label>Your Name:</label>
+  </br>
+  </br>
+
+  <input name="name"></input>
+  </br>
+  </br>
+
+  <label>Something you can't stand:</label>
+  </br>
+  </br> 
+
   <input name="item"></input>
+  </br>
+  </br>
+
   <button type="submit">Submit</button>
   </form>
   </body>
@@ -48,6 +69,11 @@ const server = http.createServer((req, res) => {
         item = body["item"];
       } else {
         item = "Nothing was entered.";
+      }
+      if (body.name) {
+        name = body.name;
+      } else {
+        name = null;
       }
       // Your code changes would end here
       res.writeHead(303, {
